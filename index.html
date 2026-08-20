@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pako Diale — QA &amp; Science Portfolio</title>
+<meta name="description" content="Portfolio of Pako Diale — Quality Assurance, Science &amp; Health Systems graduate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDEFEA;
+    --paper-alt: #E2E6DE;
+    --ink: #16211D;
+    --ink-soft: #4B564F;
+    --deep: #2B4C43;
+    --stamp: #C1401C;
+    --line: #A9B0A5;
+    --line-soft: #D3D7CD;
+    --white: #F8F9F6;
+    --maxw: 1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--deep); display:flex; align-items:center; gap:10px; }
+  .eyebrow::before{ content:""; width:14px; height:1px; background:var(--stamp); display:inline-block; }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; margin:0; color:var(--ink); }
+
+  .skip-link{ position:absolute; left:-999px; top:0; background:var(--deep); color:var(--white); padding:10px 16px; z-index:200; }
+  .skip-link:focus{ left:12px; top:12px; }
+
+  header.topbar{ position:sticky; top:0; z-index:100; background:rgba(237,239,234,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft); }
+  .nav-inner{ max-width:var(--maxw); margin:0 auto; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:14px; letter-spacing:0.04em; display:flex; align-items:center; gap:8px; text-decoration:none; }
+  .brand .dot{width:8px; height:8px; background:var(--stamp); display:inline-block; border-radius:50%;}
+  nav.links{display:flex; gap:22px; list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+  nav.links a{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; text-decoration:none; color:var(--ink-soft); padding-bottom:2px; border-bottom:1px solid transparent; transition:border-color .15s ease, color .15s ease; cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; }
+  nav.links a:hover, nav.links a:focus-visible{ color:var(--deep); border-color:var(--stamp); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); padding:8px 10px; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12px;}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{ outline:2px solid var(--stamp); outline-offset:3px; }
+
+  .hero{ padding:88px 0 64px; border-bottom:1px solid var(--line-soft); position:relative; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:start; }
+  .hero-label{margin-bottom:22px;}
+  .hero h1{ font-size:clamp(38px, 5.4vw, 64px); line-height:1.03; letter-spacing:-0.01em; }
+  .hero .role{ margin-top:16px; font-size:19px; color:var(--deep); font-weight:500; max-width:46ch; }
+  .hero .desc{ margin-top:20px; color:var(--ink-soft); max-width:52ch; font-size:15.5px; }
+  .hero-cta{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; padding:13px 22px; text-decoration:none; border:1px solid var(--ink); display:inline-flex; align-items:center; gap:8px; transition:background .15s ease, color .15s ease; cursor:pointer; }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--deep); border-color:var(--deep); }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  .specimen{ border:1px solid var(--line); background:var(--white); padding:22px 22px 20px; position:relative; box-shadow:6px 6px 0 var(--paper-alt); }
+  .specimen .row{ display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); border-bottom:1px dashed var(--line-soft); padding:7px 0; }
+  .specimen .row span:last-child{color:var(--ink); font-weight:600;}
+  .stamp{ position:absolute; top:-14px; right:-10px; border:2px solid var(--stamp); color:var(--stamp); font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:12px; letter-spacing:0.12em; padding:6px 12px; transform:rotate(7deg); background:var(--white); }
+
+  /* ===== ABOUT / TABBED DOSSIER ===== */
+  #about{ padding:76px 0 90px; }
+  .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:36px; flex-wrap:wrap; }
+  .sec-head h2{ font-size:clamp(26px,3.4vw,36px); margin-top:8px; }
+  .sec-status{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); text-align:right; }
+  .sec-status b{color:var(--deep);}
+
+  .tab-folder{ border:1px solid var(--line); background:var(--white); box-shadow:6px 6px 0 var(--paper-alt); }
+  .tablist{ display:flex; flex-wrap:wrap; list-style:none; margin:0; padding:0; border-bottom:1px solid var(--line); background:var(--paper-alt); }
+  .tablist li{ margin:0; }
+  .tab-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase;
+    background:transparent; border:none; border-right:1px solid var(--line-soft);
+    padding:16px 20px; cursor:pointer; color:var(--ink-soft); white-space:nowrap;
+    position:relative; top:0; transition:background .15s ease, color .15s ease;
+  }
+  .tab-btn:hover{ color:var(--deep); background:rgba(43,76,67,0.06); }
+  .tab-btn[aria-selected="true"]{
+    background:var(--white); color:var(--ink); font-weight:600;
+    box-shadow: inset 0 -2px 0 var(--stamp);
+  }
+  .tab-panels{ padding:38px 34px 40px; }
+  .tab-panel{ animation:fadein .18s ease; }
+  .tab-panel[hidden]{ display:none; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+  .panel-head{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--stamp); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
+  .panel-title{ font-size:24px; margin-bottom:22px; }
+
+  /* About panel */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; }
+  .about-grid p{ margin:0 0 16px; color:var(--ink-soft); font-size:15.5px; }
+  .about-grid p:first-child{ font-size:18px; color:var(--ink); font-family:'Fraunces',serif; font-weight:500; line-height:1.45;}
+  .fact-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line-soft); }
+  .fact-list li{ display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px solid var(--line-soft); font-size:14px; }
+  .fact-list li span:first-child{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; padding-top:2px;}
+  .fact-list li span:last-child{ text-align:right; font-weight:500; max-width:60%; }
+
+  /* Skills panel */
+  .skills-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+  .skill-block h3{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--deep); font-weight:600; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line); }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chip{ font-family:'IBM Plex Mono',monospace; font-size:12px; border:1px solid var(--line); padding:7px 12px; background:var(--paper); }
+
+  /* Projects panel */
+  .proj-list{ display:flex; flex-direction:column; }
+  .proj{ display:grid; grid-template-columns:70px 1fr; gap:20px; padding:24px 0; border-top:1px solid var(--line-soft); }
+  .proj:first-child{border-top:none;}
+  .proj-code{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--stamp); padding-top:4px;}
+  .proj h3{ font-size:20px; margin-bottom:8px; }
+  .proj p{ color:var(--ink-soft); margin:0 0 14px; max-width:64ch; font-size:14.8px;}
+  .proj .tech{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
+  .proj .tech span{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--deep); border:1px solid var(--line); padding:4px 9px; background:var(--paper); }
+  .proj .links a{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-decoration:underline; text-underline-offset:3px; margin-right:18px; color:var(--ink); }
+
+  /* Education / Experience panels */
+  .doc-item{ display:grid; grid-template-columns:140px 1fr; gap:20px; padding:20px 0; border-top:1px solid var(--line-soft); }
+  .doc-item:first-child{border-top:none;}
+  .doc-item .when{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); padding-top:3px;}
+  .doc-item h3{ font-size:17px; margin-bottom:4px; }
+  .doc-item .org{ color:var(--deep); font-weight:500; font-size:14px; margin-bottom:8px;}
+  .doc-item p{ color:var(--ink-soft); margin:0; font-size:14px; }
+  .doc-item ul{ margin:8px 0 0; padding-left:18px; color:var(--ink-soft); font-size:14px; }
+  .doc-item ul li{ margin-bottom:4px; }
+
+  /* Certifications panel */
+  .cert-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .cert-card{ border:1px solid var(--line); background:var(--paper); padding:18px 20px; }
+  .cert-card .tag{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--stamp); letter-spacing:.06em;}
+  .cert-card h3{ font-size:16px; margin:8px 0 4px; }
+  .cert-card p{ margin:0; color:var(--ink-soft); font-size:13.5px; }
+
+  /* Contact panel */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start;}
+  .contact-list{ list-style:none; margin:0; padding:0; }
+  .contact-list li{ border-top:1px solid var(--line-soft); padding:15px 0; display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .contact-list li:last-child{border-bottom:1px solid var(--line-soft);}
+  .contact-list .k{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+  .contact-list .v{ font-weight:500; text-decoration:none; }
+  .contact-list .v:hover{ color:var(--deep); }
+  .contact-note{ color:var(--ink-soft); font-size:14.5px; }
+
+  footer{ padding:32px 0; }
+  .foot-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  .foot-inner p{ margin:0; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; gap:28px; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .proj{ grid-template-columns:1fr; }
+    .doc-item{ grid-template-columns:1fr; }
+    .specimen{ box-shadow:4px 4px 0 var(--paper-alt); }
+    .tab-panels{ padding:28px 20px 32px; }
+  }
+  @media (max-width: 680px){
+    nav.links{ position:fixed; inset:60px 0 auto 0; background:var(--paper); flex-direction:column; padding:20px 28px; border-bottom:1px solid var(--line-soft); transform:translateY(-120%); transition:transform .2s ease; gap:0; max-height:80vh; overflow-y:auto; }
+    nav.links.open{ transform:translateY(0); }
+    nav.links a{ padding:14px 0; border-bottom:1px solid var(--line-soft); width:100%; }
+    .nav-toggle{ display:block; }
+    .tablist{ overflow-x:auto; -webkit-overflow-scrolling:touch; flex-wrap:nowrap; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="dot"></span>PAKO DIALE</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">MENU</button>
+    <nav>
+      <ul class="links" id="navLinks">
+        <li><a href="#top" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="about">About Me</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="skills">Skills</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="projects">Projects</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="education">Education</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="certifications">Certifications</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="experience">Experience</a></li>
+        <li><a href="#about" data-nav="tab" data-tab="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HOME -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow hero-label">Quality Assurance &amp; Health Analytics Graduate — Open to Work</div>
+        <h1>Pako Diale</h1>
+        <p class="role">Health Analytics graduate from the University of the Witwatersrand, trained in Python, statistical analysis and machine learning — with hands-on QMS experience from the CSIR.</p>
+        <p class="desc">Experienced in analysing health datasets, building predictive models, and identifying patterns using supervised and unsupervised learning techniques. Internship experience at CSIR supporting Health Technology Assessment and Quality Management Systems. Seeking a graduate data or health analytics role where analytical skills can support data-driven decision making.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#about" data-tab="contact">Get in touch</a>
+          <a class="btn btn-ghost" href="assets/Pako_Diale_CV.pdf" download>Download CV ↓</a>
+        </div>
+      </div>
+      <div>
+        <div class="specimen">
+          <div class="stamp">VERIFIED</div>
+          <div class="row"><span>Doc No.</span><span>CV-2026-ZA</span></div>
+          <div class="row"><span>Field</span><span>Health Analytics &amp; QA</span></div>
+          <div class="row"><span>Qualification</span><span>BHSc Hons — Wits</span></div>
+          <div class="row"><span>Location</span><span>Midrand, ZA</span></div>
+          <div class="row"><span>Status</span><span>Actively seeking</span></div>
+          <div class="row" style="border-bottom:none;"><span>Reviewed</span><span>Aug 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME (TABBED DOSSIER) -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">About Me</div>
+          <h2>The full record</h2>
+        </div>
+        <div class="sec-status">DOSSIER-2026-ZA<br><b>STATUS: CURRENT</b></div>
+      </div>
+
+      <div class="tab-folder">
+        <ul class="tablist" role="tablist" aria-label="About Me sections">
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-about" aria-controls="tabpanel-about" aria-selected="true" data-tab="about">About Me</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-skills" aria-controls="tabpanel-skills" aria-selected="false" tabindex="-1" data-tab="skills">Skills</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-projects" aria-controls="tabpanel-projects" aria-selected="false" tabindex="-1" data-tab="projects">Projects</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-education" aria-controls="tabpanel-education" aria-selected="false" tabindex="-1" data-tab="education">Education</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-certifications" aria-controls="tabpanel-certifications" aria-selected="false" tabindex="-1" data-tab="certifications">Certifications</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-experience" aria-controls="tabpanel-experience" aria-selected="false" tabindex="-1" data-tab="experience">Experience</button></li>
+          <li role="presentation"><button class="tab-btn" role="tab" id="tabbtn-contact" aria-controls="tabpanel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Contact</button></li>
+        </ul>
+
+        <div class="tab-panels">
+
+          <!-- ABOUT PANEL -->
+          <div class="tab-panel" id="tabpanel-about" role="tabpanel" aria-labelledby="tabbtn-about" tabindex="0">
+            <div class="panel-head">DOC-ABOUT-01</div>
+            <h3 class="panel-title">Grounded in science. Trained for quality systems.</h3>
+            <div class="about-grid">
+              <div>
+                <p>I'm a recent graduate who moves comfortably between the bench and the boardroom — a scientist's eye for evidence, and a quality professional's discipline for process.</p>
+                <p>My academic path combined the life and environmental sciences with health systems science, giving me a cross-disciplinary lens that suits quality, regulatory, research and data-oriented work equally well. During my internship at the CSIR, I worked directly within a live Quality Management System — supporting document control, supplier verification, internal audit observation, and Health Technology Assessment documentation under ISO 13485 and ISO 9001.</p>
+                <p>I'm also a communicator at heart: I've worked as a Teaching Assistant at Wits and volunteered at the YEBO GOGGA Science Exhibition, translating technical ideas for public audiences. I'm currently seeking graduate-level data, health analytics, or QA roles where accuracy and integrity genuinely matter.</p>
+              </div>
+              <ul class="fact-list">
+                <li><span>Based</span><span>Midrand, Johannesburg, ZA</span></li>
+                <li><span>Education</span><span>BSc &amp; BHSc Hons, Wits University</span></li>
+                <li><span>Focus areas</span><span>Health Analytics, Data Science, QA</span></li>
+                <li><span>Standards</span><span>ISO 13485, ISO 9001, SHEQ</span></li>
+                <li><span>Driver's licence</span><span>Valid, Code 10</span></li>
+                <li><span>Citizenship</span><span>South African</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SKILLS PANEL -->
+          <div class="tab-panel" id="tabpanel-skills" role="tabpanel" aria-labelledby="tabbtn-skills" tabindex="0" hidden>
+            <div class="panel-head">DOC-SKILLS-02</div>
+            <h3 class="panel-title">Technical &amp; soft skills</h3>
+            <div class="skills-grid">
+              <div class="skill-block">
+                <h3>Data &amp; Analysis</h3>
+                <div class="chip-row">
+                  <span class="chip">Python (Pandas, NumPy, Scikit-learn)</span>
+                  <span class="chip">R</span>
+                  <span class="chip">Statistical Analysis</span>
+                  <span class="chip">Exploratory Data Analysis</span>
+                  <span class="chip">Data Cleaning</span>
+                  <span class="chip">Logistic Regression</span>
+                  <span class="chip">Decision Trees</span>
+                  <span class="chip">K-Means Clustering</span>
+                  <span class="chip">Model Evaluation</span>
+                  <span class="chip">Matplotlib &amp; Seaborn</span>
+                  <span class="chip">Health Technology Assessment</span>
+                </div>
+              </div>
+              <div class="skill-block">
+                <h3>Quality &amp; Compliance</h3>
+                <div class="chip-row">
+                  <span class="chip">ISO 13485</span>
+                  <span class="chip">ISO 9001</span>
+                  <span class="chip">Document Control</span>
+                  <span class="chip">Supplier Verification</span>
+                  <span class="chip">Internal Audit Observation</span>
+                  <span class="chip">SHEQ Compliance</span>
+                </div>
+              </div>
+              <div class="skill-block">
+                <h3>Research &amp; Communication</h3>
+                <div class="chip-row">
+                  <span class="chip">Scoping Reviews</span>
+                  <span class="chip">Research Ethics</span>
+                  <span class="chip">Research Methodology</span>
+                  <span class="chip">Science Communication</span>
+                  <span class="chip">Technical Writing</span>
+                  <span class="chip">Public Presentation</span>
+                </div>
+              </div>
+              <div class="skill-block">
+                <h3>Soft Skills &amp; Tools</h3>
+                <div class="chip-row">
+                  <span class="chip">Attention to Detail</span>
+                  <span class="chip">Cross-disciplinary Thinking</span>
+                  <span class="chip">Stakeholder Communication</span>
+                  <span class="chip">Teaching &amp; Mentoring</span>
+                  <span class="chip">Integrity &amp; Accuracy</span>
+                  <span class="chip">Excel · PowerPoint · Word</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECTS PANEL -->
+          <div class="tab-panel" id="tabpanel-projects" role="tabpanel" aria-labelledby="tabbtn-projects" tabindex="0" hidden>
+            <div class="panel-head">DOC-PROJ-03</div>
+            <h3 class="panel-title">Selected work</h3>
+            <div class="proj-list">
+              <div class="proj">
+                <div class="proj-code">P-01</div>
+                <div>
+                  <h3>Heart Disease Prediction Model</h3>
+                  <p>Built a supervised machine learning model to predict the presence of heart disease from demographic and clinical variables. Cleaned and preprocessed the dataset, ran exploratory analysis using correlation heatmaps and count plots, applied feature scaling with an 80/20 stratified train-test split, and evaluated performance using accuracy, precision, recall, F1-score and a confusion matrix — reaching 80.3% prediction accuracy.</p>
+                  <div class="tech"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>Matplotlib</span><span>Seaborn</span><span>Logistic Regression</span></div>
+                  <div class="links"><a href="#">View project ↗</a><a href="#">Source code ↗</a></div>
+                </div>
+              </div>
+              <div class="proj">
+                <div class="proj-code">P-02</div>
+                <div>
+                  <h3>Air Pollution Clustering Analysis</h3>
+                  <p>Analysed an air quality dataset covering PM2.5, PM10, NO₂, SO₂ and O₃ measurements to uncover pollution patterns. Normalised variables with StandardScaler, applied K-Means clustering, and used the Elbow Method and Silhouette Score to determine the optimal number of clusters — identifying three distinct pollution profiles linked to particulate matter and traffic-related emissions.</p>
+                  <div class="tech"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>K-Means Clustering</span><span>Matplotlib</span><span>Seaborn</span></div>
+                  <div class="links"><a href="#">View project ↗</a><a href="#">Source code ↗</a></div>
+                </div>
+              </div>
+              <div class="proj">
+                <div class="proj-code">P-03</div>
+                <div>
+                  <h3>Climate Change &amp; Malaria in South Africa — A Scoping Review</h3>
+                  <p>Honours research project investigating climate change trends and health system responses in relation to malaria prevalence and incidence in South Africa. Applied structured scoping review methodology to synthesise evidence across health systems and environmental data, connecting research findings to practical health system response.</p>
+                  <div class="tech"><span>Scoping Review</span><span>Research Methodology</span><span>Health Systems Analysis</span></div>
+                  <div class="links"><a href="#">View project ↗</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDUCATION PANEL -->
+          <div class="tab-panel" id="tabpanel-education" role="tabpanel" aria-labelledby="tabbtn-education" tabindex="0" hidden>
+            <div class="panel-head">DOC-EDU-04</div>
+            <h3 class="panel-title">Academic record</h3>
+            <div class="doc-item">
+              <div class="when">01/2025 – 12/2025</div>
+              <div>
+                <h3>Bachelor of Health Sciences (Honours), Health Systems Science</h3>
+                <div class="org">University of the Witwatersrand</div>
+                <p>Modules: Contemporary Health, Innovative Health, Research Projects, Research Methodology, Health Analytics (Python), Responsible Leadership, Systems Health. Research project: "Climate change trends and health system responses on malaria prevalence and incidence in South Africa: A Scoping Review."</p>
+              </div>
+            </div>
+            <div class="doc-item">
+              <div class="when">01/2021 – 12/2024</div>
+              <div>
+                <h3>Bachelor of Science, Animal, Plant &amp; Environmental Sciences</h3>
+                <div class="org">University of the Witwatersrand</div>
+                <p>Majors: Biodiversity Science, Applied Ecology, Global Change, Ecosystem Dynamics. Final-year project: "Grazing Intensity and Landscape Function: A Comparative Study," applying Excel and R for statistical analysis and environmental data interpretation.</p>
+              </div>
+            </div>
+            <div class="doc-item">
+              <div class="when">12/2020</div>
+              <div>
+                <h3>National Senior Certificate</h3>
+                <div class="org">Thethe High School</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CERTIFICATIONS PANEL -->
+          <div class="tab-panel" id="tabpanel-certifications" role="tabpanel" aria-labelledby="tabbtn-certifications" tabindex="0" hidden>
+            <div class="panel-head">DOC-CERT-05</div>
+            <h3 class="panel-title">Certifications &amp; training</h3>
+            <div class="cert-grid">
+              <div class="cert-card">
+                <div class="tag">TRAINING</div>
+                <h3>ISO 13485 Awareness</h3>
+                <p>Quality management systems for medical devices — completed via CSIR training.</p>
+              </div>
+              <div class="cert-card">
+                <div class="tag">TRAINING</div>
+                <h3>Document Control</h3>
+                <p>Document control practices within a QMS environment — CSIR.</p>
+              </div>
+              <div class="cert-card">
+                <div class="tag">TRAINING</div>
+                <h3>SHEQ Compliance</h3>
+                <p>Safety, Health, Environment and Quality compliance training — CSIR.</p>
+              </div>
+              <div class="cert-card">
+                <div class="tag">RESEARCH</div>
+                <h3>Joanna Briggs Institute — Scoping Reviews</h3>
+                <p>Training in systematic scoping review methodology.</p>
+              </div>
+              <div class="cert-card">
+                <div class="tag">RESEARCH</div>
+                <h3>TRREE Research Ethics</h3>
+                <p>Certification in research ethics for training and research involving human participants.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE PANEL -->
+          <div class="tab-panel" id="tabpanel-experience" role="tabpanel" aria-labelledby="tabbtn-experience" tabindex="0" hidden>
+            <div class="panel-head">DOC-EXP-06</div>
+            <h3 class="panel-title">Work experience</h3>
+            <div class="doc-item">
+              <div class="when">07/2025 – 11/2025</div>
+              <div>
+                <h3>Intern / Student Visitor — QMS &amp; Health Technology Assessment</h3>
+                <div class="org">Council for Scientific and Industrial Research (CSIR)</div>
+                <p>Gained practical exposure to Quality Management Systems (ISO 13485 &amp; ISO 9001) in a regulated research and manufacturing environment.</p>
+                <ul>
+                  <li>Assisted with Health Technology Assessment documentation using evidence-based frameworks</li>
+                  <li>Supported document control processes including creation, revision, and version management</li>
+                  <li>Participated in supplier verification and ISO certification checks</li>
+                  <li>Observed internal audits, gaining exposure to compliance and continuous improvement processes</li>
+                </ul>
+              </div>
+            </div>
+            <div class="doc-item">
+              <div class="when">07/2025 – 11/2025</div>
+              <div>
+                <h3>Teaching Assistant — Health Systems</h3>
+                <div class="org">University of the Witwatersrand</div>
+                <p>Facilitated tutorials and group discussions for first-year Health Systems students, supported academic writing and research skill development, and assisted with course administration.</p>
+              </div>
+            </div>
+            <div class="doc-item">
+              <div class="when">05/2024</div>
+              <div>
+                <h3>Volunteer</h3>
+                <div class="org">YEBO GOGGA Science Exhibition, Wits University</div>
+                <p>Promoted science awareness and education to learners and the public, and supported coordination of exhibition activities and visitor engagement.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTACT PANEL -->
+          <div class="tab-panel" id="tabpanel-contact" role="tabpanel" aria-labelledby="tabbtn-contact" tabindex="0" hidden>
+            <div class="panel-head">DOC-CONTACT-07</div>
+            <h3 class="panel-title">Let's work together</h3>
+            <div class="contact-grid">
+              <p class="contact-note">I'm actively looking for graduate-level opportunities in health analytics, data science, or quality assurance. If my background looks like a fit for your team, I'd love to hear from you. You can also download my full CV below.</p>
+              <ul class="contact-list">
+                <li><span class="k">Email</span><a class="v" href="mailto:pakodiale89@gmail.com">pakodiale89@gmail.com</a></li>
+                <li><span class="k">Phone</span><a class="v" href="tel:+27670684429">067 068 4429</a></li>
+                <li><span class="k">GitHub</span><a class="v" href="https://github.com/pakodiale-creator" target="_blank" rel="noopener">github.com/pakodiale-creator</a></li>
+                <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/pako-diale-229054255" target="_blank" rel="noopener">linkedin.com/in/pako-diale-229054255</a></li>
+              </ul>
+            </div>
+            <div style="margin-top:24px;">
+              <a class="btn btn-primary" href="assets/Pako_Diale_CV.pdf" download>Download CV ↓</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p>© 2026 Pako Diale. Built with AI-assisted development.</p>
+    <p>REV. 2026-08-20</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Tabs logic
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+  const panels = Array.from(document.querySelectorAll('.tab-panel'));
+
+  function activateTab(tabKey, focusPanel) {
+    tabButtons.forEach(btn => {
+      const isActive = btn.dataset.tab === tabKey;
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      btn.tabIndex = isActive ? 0 : -1;
+    });
+    panels.forEach(panel => {
+      const match = panel.id === 'tabpanel-' + tabKey;
+      panel.hidden = !match;
+      if (match && focusPanel) panel.focus();
+    });
+  }
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => activateTab(btn.dataset.tab, false));
+    btn.addEventListener('keydown', (e) => {
+      const idx = tabButtons.indexOf(btn);
+      if (e.key === 'ArrowRight') { e.preventDefault(); const n = tabButtons[(idx+1) % tabButtons.length]; n.focus(); activateTab(n.dataset.tab, false); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); const p = tabButtons[(idx-1+tabButtons.length) % tabButtons.length]; p.focus(); activateTab(p.dataset.tab, false); }
+    });
+  });
+
+  // Nav links: switch tab (and close mobile menu) when a nav item points to a tab
+  document.querySelectorAll('a[data-tab]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const tabKey = link.dataset.tab;
+      if (tabKey) activateTab(tabKey, false);
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  navLinks.querySelectorAll('a:not([data-tab])').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>
